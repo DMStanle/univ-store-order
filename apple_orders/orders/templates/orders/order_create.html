@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Create Order</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% if form.errors %}
+    <div class="error-box">
+        {{ form.errors }}
+    </div>
+{% endif %}
+
+    <p>
+        <label for="{{ form.customer_name.id_for_label }}">Customer name:</label>
+        {{ form.customer_name }}
+    </p>
+
+    <p>
+        <label for="{{ form.customer_phone.id_for_label }}">Customer phone:</label>
+        {{ form.customer_phone }}
+    </p>
+
+    <p>
+    <label for="{{ form.customer_email.id_for_label }}">Customer email:</label>
+    {{ form.customer_email }}
+</p>
+
+    <p>
+        <label for="{{ form.customer_school_id.id_for_label }}">Customer school id:</label>
+        {{ form.customer_school_id }}
+    </p>
+
+    <p>
+        <label for="{{ form.employee_name.id_for_label }}">Employee name:</label>
+        {{ form.employee_name }}
+    </p>
+
+    <h2>Products</h2>
+
+    {% for category, products in grouped_products.items %}
+        <div class="category-group">
+            <h3>{{ category }}</h3>
+
+            {% if products %}
+                {% for product in products %}
+                    <label class="checkbox-row">
+                        <input
+                            type="checkbox"
+                            name="products"
+                            value="{{ product.id }}"
+                            {% if product in form.products.value %}checked{% endif %}
+                        >
+                        {{ product.title }} - ${{ product.price }}
+                    </label>
+                {% endfor %}
+            {% else %}
+                <p>No products in this category.</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <button type="submit" class="btn">Create Order</button>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apple Orders</title>
+    <link rel="stylesheet" href="{% static 'orders/styles.css' %}">
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="{% url 'order_create' %}">New Order</a>
+            {% if request.user.is_staff %}
+                <a href="{% url 'product_list' %}">Products</a>
+            {% endif %}
+        </div>
+        <div>
+            {% if request.user.is_authenticated %}
+                <span class="nav-user">{{ request.user.username }}</span>
+                <form method="post" action="{% url 'logout' %}" class="logout-form">
+                    {% csrf_token %}
+                    <button class="btn" type="submit">Logout</button>
+                </form>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

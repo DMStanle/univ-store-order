@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Apple Order Record</h1>
+
+<div class="no-print" style="margin-bottom: 1.5rem;">
+    <button onclick="window.print()" class="btn">Print</button>
+</div>
+
+<h2>Customer Information</h2>
+<p><strong>Name:</strong> {{ order.customer_name }}</p>
+<p><strong>Phone:</strong> {{ order.customer_phone }}</p>
+<p><strong>Email:</strong> {{ order.customer_email }}</p>
+<p><strong>School ID:</strong> {{ order.customer_school_id }}</p>
+
+<h2>Order Information</h2>
+<p><strong>Employee:</strong> {{ order.employee_name }}</p>
+<p><strong>Date:</strong> {{ order.created_at|date:"F j, Y" }}</p>
+
+<div class="print-lines">
+    <p><strong>Order #:</strong> ________________________________</p>
+
+    <p><strong>PO #:</strong> ________________________________</p>
+
+    <p><strong>Approved By:</strong> ________________________________</p>
+</div>
+
+<h2>Products</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Model Number</th>
+            <th>UPC</th>
+            <th>Price Before Tax</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in order.items.all %}
+        <tr>
+            <td>{{ item.product.title }}</td>
+            <td>{{ item.product.model_number|default:"—" }}</td>
+            <td>{{ item.product.upc }}</td>
+            <td>${{ item.product.price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2 class="section-title">Total Before Tax</h2>
+<p><strong>${{ order.total_before_tax }}</strong></p>
+
+<h2 class="section-title">QR Code</h2>
+<img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code">
+{% endblock %}
