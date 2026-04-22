@@ -24,13 +24,13 @@ def product_list(request):
 
     products = Product.objects.none()
 
-    if selected_category in ["Mac", "iPad", "Apple Watch", "Other"]:
+    if selected_category in ["Mac", "iPad", "Apple Watch", "Apple Care +", "Other"]:
         products = Product.objects.filter(
             is_active=True,
             category=selected_category
         ).order_by("title")
 
-    categories = ["Mac", "iPad", "Apple Watch", "Other"]
+    categories = ["Mac", "iPad", "Apple Watch", "Apple Care +", "Other"]
 
     return render(
         request,
@@ -137,6 +137,7 @@ def order_create(request):
         "Mac": Product.objects.filter(is_active=True, category="Mac").order_by("title"),
         "iPad": Product.objects.filter(is_active=True, category="iPad").order_by("title"),
         "Apple Watch": Product.objects.filter(is_active=True, category="Apple Watch").order_by("title"),
+        "Apple Care +": Product.objects.filter(is_active=True, category="Apple Care +").order_by("title"),
         "Other": Product.objects.filter(is_active=True, category="Other").order_by("title"),
     }
 

@@ -1,6 +1,7 @@
 from decimal import Decimal
 from django.core.validators import MinValueValidator
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 class Product(models.Model):
@@ -8,6 +9,7 @@ class Product(models.Model):
         ("Mac", "Mac"),
         ("iPad", "iPad"),
         ("Apple Watch", "Apple Watch"),
+        ("Apple Care +", "Apple Care +"),
         ("Other", "Other"),
     ]
 
@@ -15,8 +17,14 @@ class Product(models.Model):
     model_number = models.CharField(
         max_length=100,
         blank=True,
-        null=True
     )
+
+    def clean(self):
+        if self.category != "Apple Care +" and not self.model_number:
+            raise ValidationError({
+                "model_number": "Model number is required for this category."
+            })
+
     upc = models.CharField(max_length=50, unique=True)
     price = models.DecimalField(
         max_digits=10,

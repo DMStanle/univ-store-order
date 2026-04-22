@@ -42,7 +42,9 @@ nav a:hover {
     box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     margin-top: 0;
     color: #111;
 }
@@ -150,37 +152,227 @@ th {
 }
 
 .print-lines {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .print-lines p {
-    margin-bottom: 1.25rem;
+    margin-bottom: 0.8rem;
 }
 
 .no-print {
     margin-bottom: 1.5rem;
 }
 
+.order-print-page {
+    width: 100%;
+}
+
+.print-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.print-header-left {
+    flex: 1;
+    min-width: 0;
+}
+
+.print-header-right {
+    width: 110px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.print-qr {
+    width: 95px;
+    height: 95px;
+    object-fit: contain;
+}
+
+.qr-label {
+    margin: 0 0 0.3rem 0;
+}
+
+.compact-section {
+    margin-bottom: 0.65rem;
+}
+
+.compact-section p {
+    margin: 0.2rem 0;
+}
+
+.compact-lines p {
+    margin: 0.35rem 0;
+}
+
+.products-heading {
+    margin-top: 0.75rem;
+    margin-bottom: 0.35rem;
+}
+
+.products-table {
+    table-layout: fixed;
+    margin-top: 0.3rem;
+}
+
+.products-table th,
+.products-table td {
+    padding: 0.45rem 0.4rem;
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+
+.compact-total {
+    margin-top: 0.6rem;
+    font-size: 1rem;
+}
+
 @media print {
-    nav,
-    .no-print {
-        display: none;
+    @page {
+        size: letter portrait;
+        margin: 0.25in;
     }
 
+    nav,
+    .no-print,
+    .btn,
+    .actions,
+    .logout-form {
+        display: none !important;
+    }
+
+    html,
     body {
-        background: white;
+        background: white !important;
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+        line-height: 1.05;
+        color: black;
     }
 
     .container {
         box-shadow: none;
         margin: 0;
         max-width: 100%;
+        width: 100%;
         border-radius: 0;
         padding: 0;
+        background: white;
     }
 
-    .btn {
-        display: none;
+    .order-print-page {
+        width: 100%;
+    }
+
+    .print-header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .print-header-left {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .print-header-right {
+        width: 78px;
+        text-align: center;
+        flex-shrink: 0;
+    }
+
+    .print-qr {
+        width: 62px;
+        height: 62px;
+    }
+
+    .qr-label {
+        margin: 0 0 2px 0;
+        font-size: 10px;
+    }
+
+    h1 {
+        font-size: 15px;
+        margin: 0 0 4px 0;
+    }
+
+    h2,
+    h3 {
+        font-size: 11px;
+        margin: 4px 0 2px 0;
+    }
+
+    p {
+        margin: 1px 0;
+    }
+
+    .compact-section {
+        margin-bottom: 4px;
+    }
+
+    .compact-section p {
+        margin: 1px 0;
+    }
+
+    .print-lines {
+        margin-top: 4px;
+        margin-bottom: 4px;
+    }
+
+    .compact-lines p {
+        margin: 2px 0;
+    }
+
+    .products-heading {
+        margin-top: 4px;
+        margin-bottom: 2px;
+    }
+
+    table {
+        width: 100%;
+        margin-top: 0.15rem;
+        margin-bottom: 0.2rem;
+        border-collapse: collapse;
+        table-layout: fixed;
+        font-size: 9px;
+    }
+
+    th,
+    td {
+        border: 1px solid #d1d1d6;
+        padding: 2px 3px;
+        text-align: left;
+        vertical-align: top;
+        word-break: break-word;
+    }
+
+    th {
+        background: #f2f2f2 !important;
+        font-weight: 700;
+    }
+
+    .products-table th,
+    .products-table td {
+        padding: 2px 3px;
+        font-size: 9px;
+    }
+
+    .compact-total {
+        margin-top: 4px;
+        font-size: 10px;
+    }
+
+    tr,
+    td,
+    th,
+    .order-print-page,
+    .print-header-row {
+        page-break-inside: avoid;
+        break-inside: avoid;
     }
 }
