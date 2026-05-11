@@ -232,147 +232,98 @@ th {
 
 @media print {
     @page {
-        size: letter portrait;
-        margin: 0.25in;
+        size: letter;
+        margin: 0.45in 0.55in;
+    }
+
+    body {
+        background: white !important;
+        color: black !important;
+        font-family: Arial, sans-serif;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     nav,
-    .no-print,
-    .btn,
-    .actions,
-    .logout-form {
+    .no-print {
         display: none !important;
     }
 
-    html,
-    body {
-        background: white !important;
-        margin: 0;
-        padding: 0;
-        font-size: 10px;
-        line-height: 1.05;
-        color: black;
-    }
-
-    .container {
-        box-shadow: none;
-        margin: 0;
-        max-width: 100%;
-        width: 100%;
-        border-radius: 0;
-        padding: 0;
-        background: white;
-    }
-
     .order-print-page {
-        width: 100%;
+        width: 7.4in !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        box-shadow: none !important;
     }
 
     .print-header-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 0.5rem;
+        display: block !important;
     }
 
     .print-header-left {
-        flex: 1;
-        min-width: 0;
+        width: 100% !important;
     }
 
     .print-header-right {
-        width: 78px;
-        text-align: center;
-        flex-shrink: 0;
+        margin-top: 28px !important;
+        text-align: left !important;
     }
 
-    .print-qr {
-        width: 62px;
-        height: 62px;
+    .order-print-page h1 {
+        font-size: 28px !important;
+        margin: 0 0 18px 0 !important;
+        font-weight: 700 !important;
     }
 
-    .qr-label {
-        margin: 0 0 2px 0;
-        font-size: 10px;
-    }
-
-    h1 {
-        font-size: 15px;
-        margin: 0 0 4px 0;
-    }
-
-    h2,
-    h3 {
-        font-size: 11px;
-        margin: 4px 0 2px 0;
-    }
-
-    p {
-        margin: 1px 0;
+    .order-print-page p {
+        font-size: 16px !important;
+        margin: 8px 0 !important;
+        line-height: 1.25 !important;
     }
 
     .compact-section {
-        margin-bottom: 4px;
+        margin-bottom: 12px !important;
     }
 
-    .compact-section p {
-        margin: 1px 0;
+    .compact-lines {
+        margin-top: 28px !important;
     }
 
-    .print-lines {
-        margin-top: 4px;
-        margin-bottom: 4px;
+    .qr-label {
+        font-size: 16px !important;
+        margin-bottom: 10px !important;
     }
 
-    .compact-lines p {
-        margin: 2px 0;
+    .print-qr {
+        width: 130px !important;
+        height: 130px !important;
     }
 
     .products-heading {
-        margin-top: 4px;
-        margin-bottom: 2px;
+        font-size: 28px !important;
+        margin: 22px 0 18px 0 !important;
     }
 
-    table {
-        width: 100%;
-        margin-top: 0.15rem;
-        margin-bottom: 0.2rem;
-        border-collapse: collapse;
-        table-layout: fixed;
-        font-size: 9px;
-    }
-
-    th,
-    td {
-        border: 1px solid #d1d1d6;
-        padding: 2px 3px;
-        text-align: left;
-        vertical-align: top;
-        word-break: break-word;
-    }
-
-    th {
-        background: #f2f2f2 !important;
-        font-weight: 700;
+    .products-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        font-size: 16px !important;
     }
 
     .products-table th,
     .products-table td {
-        padding: 2px 3px;
-        font-size: 9px;
+        text-align: left !important;
+        border-bottom: 1px solid #bbb !important;
+        padding: 10px 8px !important;
+    }
+
+    .products-table th {
+        font-weight: 700 !important;
     }
 
     .compact-total {
-        margin-top: 4px;
-        font-size: 10px;
-    }
-
-    tr,
-    td,
-    th,
-    .order-print-page,
-    .print-header-row {
-        page-break-inside: avoid;
-        break-inside: avoid;
+        font-size: 16px !important;
+        margin-top: 12px !important;
     }
 }
